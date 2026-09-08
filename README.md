@@ -1,7 +1,7 @@
 # Data-Analyst-Operational-Ecommerce-2
 E-commerce operational data analysis using Python and Pandas to monitor order performance, fulfillment efficiency, cancellations, returns, shipping SLA, and operational data quality.
 
-Looker Studio (Data Studio) Dashboard : bit.ly/Data_Analyst_Ecommerce_Report
+Looker Studio (Data Studio) Dashboard : https://bit.ly/Data_Analyst_Ecommerce_Report
 
 # E-commerce Operational Performance Analysis
 
