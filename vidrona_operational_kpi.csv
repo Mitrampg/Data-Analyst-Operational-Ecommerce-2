@@ -1,0 +1,17 @@
+metric,value
+Total Orders,3153.0
+Completed Orders,2650.0
+Cancelled Orders,503.0
+Completion Rate (%),84.05
+Cancellation Rate (%),15.95
+Median Processing Time (Hours),18.88
+P90 Processing Time (Hours),32.1
+Critical Orders,26.0
+Critical Order Rate (%),0.96
+Late Shipment Orders,9.0
+Late Shipment Rate (%),0.33
+On-Time Shipping Arrangement Rate (%),99.67
+Orders With Return,36.0
+Return Order Rate (%),1.36
+Returned Items,36.0
+Returned Item Rate (%),1.02

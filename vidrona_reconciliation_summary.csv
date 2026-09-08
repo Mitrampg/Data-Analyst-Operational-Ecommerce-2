@@ -1,0 +1,10 @@
+check,issue_count,status
+Completed order without shipping timestamp,0,PASS
+Completed order without completion timestamp,0,PASS
+Shipping before order creation,0,PASS
+Completion before shipping arrangement,0,PASS
+Payment before order creation,0,PASS
+Return flag without returned items,0,PASS
+Returned items without return flag,0,PASS
+Cancelled order classified as Not Cancelled,0,PASS
+Non-cancelled order with cancellation stage,0,PASS
