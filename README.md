@@ -1,15 +1,19 @@
 # Data-Analyst-Operational-Ecommerce-2
 E-commerce operational data analysis using Python and Pandas to monitor order performance, fulfillment efficiency, cancellations, returns, shipping SLA, and operational data quality.
 
+Looker Studio (Data Studio) Dashboard : bit.ly/Data_Analyst_Ecommerce_Report
+
 # E-commerce Operational Performance Analysis
 
 ## Overview
 
-This project analyzes e-commerce operational data to evaluate **order performance, fulfillment efficiency, cancellations, returns, shipping deadline compliance, operational bottlenecks, and data consistency**.
+This project presents an end-to-end operational analysis of a real operating e-commerce business, using actual transactional and operational data generated from day-to-day store activities.
 
-The analysis simulates a typical **E-commerce Operations Data Analyst** workflow, starting from raw transactional data and progressing through data quality assessment, cleaning, feature engineering, KPI development, operational reconciliation, and business insight generation.
+The analysis focuses on evaluating the complete order lifecycle, including order creation, payment, fulfillment, shipping arrangement, completion, cancellation, and returns.
 
-The project uses **Python and Pandas** to transform order-item-level transactional data into order-level operational metrics that can be used for performance monitoring and dashboard development.
+Using Python and Pandas, raw order-item-level transactional data is cleaned, validated, transformed, and aggregated into order-level operational datasets to monitor performance, identify bottlenecks, detect data inconsistencies, and generate actionable operational insights.
+
+To protect business and customer confidentiality, sensitive or personally identifiable information should be removed or anonymized before the dataset is published.
 
 ---
 
@@ -340,6 +344,167 @@ Potential dashboard components include:
 * Operational anomaly tracking
 
 ---
+## Business Insights
+
+The analysis of actual e-commerce operational data from **October 2025** generated several key findings related to order completion, fulfillment efficiency, cancellations, shipping performance, and returns.
+
+### 1. Order Completion Performance
+
+A total of **3,153 unique orders** were recorded during the analysis period.
+
+* **2,650 orders were completed**
+* **503 orders were cancelled**
+* **Completion Rate: 84.05%**
+* **Cancellation Rate: 15.95%**
+
+**Business Insight:**
+Approximately **1 out of every 6 orders was cancelled**, indicating that cancellation represents a meaningful source of lost order conversion. Further analysis of cancellation stages and reasons is therefore important to identify which cancellations can potentially be reduced through operational improvements.
+
+---
+
+### 2. Fulfillment Processing Performance
+
+Among **2,712 orders that entered the fulfillment process**:
+
+* Median processing time: **18.88 hours**
+* P90 processing time: **32.10 hours**
+
+This means that half of processed orders entered shipping arrangement within approximately 19 hours, while 90% were processed within approximately 32 hours.
+
+**Business Insight:**
+Overall fulfillment performance was relatively consistent for most orders. However, using both median and P90 processing time provides better operational monitoring than relying only on averages, as unusually slow orders can be identified separately.
+
+---
+
+### 3. Critical Processing Cases Were Limited
+
+A total of **26 orders (0.96% of processed orders)** were classified as `Critical` based on processing times above the 99th-percentile monitoring threshold.
+
+**Business Insight:**
+Severe processing delays affected only a small proportion of orders. Rather than treating processing speed as a system-wide issue, operational teams could focus investigation on these specific outlier orders to identify recurring causes such as stock availability, fulfillment handling, or other operational exceptions.
+
+---
+
+### 4. Shipping Deadline Compliance Was High
+
+Only **9 processed orders** were arranged for shipping after their marketplace shipping deadline.
+
+* **Late Shipment Rate: 0.33%**
+* **On-Time Shipping Arrangement Rate: 99.67%**
+
+**Business Insight:**
+Shipping deadline compliance was very high, suggesting that fulfillment operations generally succeeded in arranging shipments within marketplace requirements.
+
+The small number of late orders should still be monitored because repeated late shipments may negatively affect marketplace service performance.
+
+---
+
+### 5. Most Cancellations Happened Before Fulfillment
+
+Of the **503 cancelled orders**:
+
+* **441 orders (87.67%)** were cancelled before fulfillment started
+* **62 orders (12.33%)** were cancelled after fulfillment had already been initiated
+
+**Business Insight:**
+Most cancellations occurred before warehouse or shipping activities began, meaning the majority did not directly consume fulfillment resources.
+
+However, the **62 post-fulfillment cancellations** deserve greater operational attention because processing or logistics activities had already started, potentially creating unnecessary handling and operational costs.
+
+---
+
+### 6. Cancellation Reasons Reveal Improvement Opportunities
+
+The largest cancellation categories were:
+
+| Cancellation Reason | Cancelled Orders |  Share |
+| ------------------- | ---------------: | -----: |
+| Other               |              123 | 24.45% |
+| Change Order        |              121 | 24.06% |
+| Change Address      |              105 | 20.87% |
+| Unpaid Order        |               76 | 15.11% |
+| Delivery Failed     |               60 | 11.93% |
+
+**Business Insight:**
+`Change Order` and `Change Address` together accounted for approximately **44.93% of cancellations**, making customer order modification a major cancellation driver.
+
+This suggests a potential opportunity to reduce cancellations by improving product information, checkout confirmation, address validation, or customer communication before fulfillment begins.
+
+`Delivery Failed` is particularly important because these cancellations occurred after fulfillment initiation, meaning logistics resources had already been consumed.
+
+---
+
+### 7. Return Incidence Was Relatively Low
+
+Among completed orders:
+
+* **36 orders** contained returned items
+* **Return Order Rate: 1.36%**
+* **36 of 3,513 ordered items** were returned
+* **Item Return Rate: 1.02%**
+
+**Business Insight:**
+Returns represented a relatively small portion of completed transactions during the observed period. This indicates that cancellations currently represent a considerably larger operational issue than product returns.
+
+Operational improvement efforts may therefore generate greater impact by prioritizing cancellation reduction while continuing to monitor return trends.
+
+---
+
+### 8. Higher Daily Order Volume Did Not Significantly Slow Processing
+
+The correlation between daily order volume and median processing time was approximately:
+
+**0.076**
+
+This indicates very little linear relationship between daily workload and processing time during the observed period.
+
+**Business Insight:**
+Higher order volume alone does not appear to explain slower fulfillment days.
+
+This suggests that processing delays may be driven by other operational factors rather than simply order volume. Future analysis could investigate variables such as product mix, fulfillment method, order timing, stock availability, or staffing capacity.
+
+---
+
+### 9. Operational Data Passed Reconciliation Checks
+
+The reconciliation process found no inconsistencies across the implemented validation rules, including:
+
+* Completed orders without shipping timestamps
+* Completed orders without completion timestamps
+* Shipping before order creation
+* Completion before shipping arrangement
+* Payment before order creation
+* Return-status inconsistencies
+* Cancellation-stage inconsistencies
+
+All implemented reconciliation checks returned **PASS**.
+
+**Business Insight:**
+The operational dataset showed strong logical consistency across the tested order lifecycle fields, increasing confidence that the resulting KPIs can be used for operational monitoring and dashboard development.
+
+---
+
+## Recommended Actions
+
+Based on the analysis, several operational priorities can be considered:
+
+1. **Reduce preventable cancellations** by investigating `Change Order`, `Change Address`, and `Unpaid Order` cases.
+2. **Prioritize post-fulfillment cancellations** because these orders have already consumed operational resources.
+3. **Investigate Critical processing orders individually** rather than treating fulfillment delays as a system-wide problem.
+4. **Maintain the current shipping SLA performance**, while monitoring the small number of late-shipment cases.
+5. **Continue monitoring returns**, although their current incidence is substantially lower than cancellations.
+6. **Investigate additional drivers of processing time**, since daily order volume alone showed little association with fulfillment speed.
+
+---
+
+## Overall Business Conclusion
+
+The analysis indicates that the store's **fulfillment and shipping operations were generally stable**, with **99.67% on-time shipping arrangement**, fewer than **1% Critical processing cases**, and a relatively low **1.36% return-order rate**.
+
+The more significant improvement opportunity lies in **order cancellations**, which affected **15.95% of total orders**. Since most cancellations occurred before fulfillment and large portions were associated with order or address changes, cancellation prevention represents a potential area for improving overall order conversion without requiring major changes to the existing fulfillment process.
+
+At the same time, post-fulfillment cancellations and isolated processing outliers should remain operational monitoring priorities because they represent cases where business resources may already have been consumed.
+
 
 ## Conclusion
 
