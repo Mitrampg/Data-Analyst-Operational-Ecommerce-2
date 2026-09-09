@@ -326,24 +326,6 @@ This project demonstrates practical skills in:
 * Dashboard data preparation
 
 ---
-
-## Potential Development
-
-The project can be extended by developing an interactive operational dashboard using tools such as **Power BI, Tableau, or Looker Studio**.
-
-Potential dashboard components include:
-
-* Operational KPI scorecards
-* Daily order trends
-* Completion and cancellation rates
-* Processing-time monitoring
-* Processing-category distribution
-* Shipping deadline performance
-* Cancellation reason analysis
-* Return monitoring
-* Operational anomaly tracking
-
----
 ## Business Insights
 
 The analysis of actual e-commerce operational data from **October 2025** generated several key findings related to order completion, fulfillment efficiency, cancellations, shipping performance, and returns.
